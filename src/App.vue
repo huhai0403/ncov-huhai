@@ -66,28 +66,32 @@
             <p>治愈</p>
           </div>
           <div class="table-scr" v-if="areaData">
-            <div class="table-box" v-if="item.countryEnglishName==='China'" v-for="(item,index) in areaData"
-                 :key="index">
-              <div class="table-top">
-                <p><i :class="checkedTableName===item.provinceShortName?'tj active':'tj'"
-                      @click="checkedTableName===item.provinceShortName?checkedTableName='':checkedTableName=item.provinceShortName"></i>{{item.provinceShortName}}
-                </p>
-                <p>{{item.currentConfirmedCount}}</p>
-                <p>{{item.confirmedCount}}</p>
-                <p>{{item.deadCount}}</p>
-                <p>{{item.curedCount}}</p>
-              </div>
-              <template v-if="checkedTableName===item.provinceShortName">
-                <div v-for="(city,cIndex) in item.cities" :key="cIndex" class="table-top table-child">
-                  <p>{{city.cityName}}</p>
-                  <p>{{city.currentConfirmedCount}}</p>
-                  <p>{{city.confirmedCount}}</p>
-                  <p>{{city.deadCount}}</p>
-                  <p>{{city.curedCount}}</p>
-                </div>
-              </template>
+            <template v-for="(item,index) in areaData">
+              <div class="table-box"   v-if="item.countryEnglishName==='China'"
+                   :key="index">
 
-            </div>
+                <div class="table-top">
+                  <p><i :class="checkedTableName===item.provinceShortName?'tj active':'tj'"
+                        @click="checkedTableName===item.provinceShortName?checkedTableName='':checkedTableName=item.provinceShortName"></i>{{item.provinceShortName}}
+                  </p>
+                  <p>{{item.currentConfirmedCount}}</p>
+                  <p>{{item.confirmedCount}}</p>
+                  <p>{{item.deadCount}}</p>
+                  <p>{{item.curedCount}}</p>
+                </div>
+                <template v-if="checkedTableName===item.provinceShortName">
+                  <div v-for="(city,cIndex) in item.cities" :key="cIndex" class="table-top table-child">
+                    <p>{{city.cityName}}</p>
+                    <p>{{city.currentConfirmedCount}}</p>
+                    <p>{{city.confirmedCount}}</p>
+                    <p>{{city.deadCount}}</p>
+                    <p>{{city.curedCount}}</p>
+                  </div>
+                </template>
+
+              </div>
+            </template>
+
           </div>
           <div class="weui-loadmore" style="margin-top: 20vh" v-else>
             <i class="weui-loading"></i>
