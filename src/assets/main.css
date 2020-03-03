@@ -257,7 +257,9 @@
     background: none;
     height: 20px;
     line-height: 20px;
-    font-size: 10px
+    font-size: 10px;
+    background: #fff;
+    border-bottom: 1px dashed #ccc;
 }
 
 .table-child p:first-child {
